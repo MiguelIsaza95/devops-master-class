@@ -1,25 +1,24 @@
-version: '3.7'
+version: '3.8'
 services:
   currency-exchange:
-    image: in28min/currency-exchange:0.0.1-RELEASE
+    image: miguelisaza95/currency-exchange
     ports:
       - "8000:8000"
     restart: always
     networks:
-      - currency-compose-network
+      - currency-network
 
   currency-conversion:
-    image: in28min/currency-conversion:0.0.1-RELEASE
+    image: miguelisaza95/currency-conversion
     ports:
       - "8100:8100"
     restart: always
     environment:
       CURRENCY_EXCHANGE_SERVICE_HOST: http://currency-exchange
-    depends_on:
-      - currency-exchange
     networks:
-      - currency-compose-network
+      - currency-network
   
 # Networks to be created to facilitate communication between containers
 networks:
-  currency-compose-network:
+  currency-network:
+          # use bridge drive by default

@@ -1,3 +1,4 @@
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -37,7 +38,7 @@ metadata:
   namespace: default
 spec:
   ports:
-  - nodePort: 32208
+  - nodePort: 31140
     port: 8080
     protocol: TCP
     targetPort: 8080

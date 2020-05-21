@@ -2,16 +2,18 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: "4"
-  creationTimestamp: "2020-01-28T12:40:25Z"
-  generation: 5
+    deployment.kubernetes.io/revision: "10"
+    kubernetes.io/change-cause: kubectl set image deployment hello-world-rest-api
+      hello-world-rest-api=in28min/hello-world-rest-api:0.0.3.RELEASE --record=true
+  creationTimestamp: "2020-05-16T20:33:47Z"
+  generation: 11
   labels:
     app: hello-world-rest-api
   name: hello-world-rest-api
   namespace: default
-  resourceVersion: "4926"
+  resourceVersion: "24341"
   selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/hello-world-rest-api
-  uid: 5b515896-41cb-11ea-8e69-42010a80009c
+  uid: 8b804339-97b4-11ea-955a-42010a8000d6
 spec:
   progressDeadlineSeconds: 600
   replicas: 2
@@ -31,7 +33,7 @@ spec:
         app: hello-world-rest-api
     spec:
       containers:
-      - image: in28min/hello-world-rest-api:0.0.1.RELEASE
+      - image: in28min/hello-world-rest-api:0.0.3.RELEASE
         imagePullPolicy: IfNotPresent
         name: hello-world-rest-api
         resources: {}
@@ -45,19 +47,19 @@ spec:
 status:
   availableReplicas: 3
   conditions:
-  - lastTransitionTime: "2020-01-28T12:41:15Z"
-    lastUpdateTime: "2020-01-28T12:41:15Z"
+  - lastTransitionTime: "2020-05-16T20:34:59Z"
+    lastUpdateTime: "2020-05-16T20:34:59Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  - lastTransitionTime: "2020-01-28T12:40:25Z"
-    lastUpdateTime: "2020-01-28T12:57:52Z"
-    message: ReplicaSet "hello-world-rest-api-58ff5dd898" has successfully progressed.
+  - lastTransitionTime: "2020-05-16T20:33:47Z"
+    lastUpdateTime: "2020-05-16T22:08:27Z"
+    message: ReplicaSet "hello-world-rest-api-7897b99c89" has successfully progressed.
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing
-  observedGeneration: 5
+  observedGeneration: 11
   readyReplicas: 3
   replicas: 3
   updatedReplicas: 3
@@ -65,19 +67,19 @@ status:
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: "2020-01-28T12:40:28Z"
+  creationTimestamp: "2020-05-16T20:34:32Z"
   labels:
     app: hello-world-rest-api
   name: hello-world-rest-api
   namespace: default
-  resourceVersion: "1250"
+  resourceVersion: "3954"
   selfLink: /api/v1/namespaces/default/services/hello-world-rest-api
-  uid: 5d6a09ca-41cb-11ea-8e69-42010a80009c
+  uid: a65851eb-97b4-11ea-955a-42010a8000d6
 spec:
-  clusterIP: 10.0.8.24
+  clusterIP: 10.8.6.176
   externalTrafficPolicy: Cluster
   ports:
-  - nodePort: 32208
+  - nodePort: 31140
     port: 8080
     protocol: TCP
     targetPort: 8080
@@ -88,4 +90,4 @@ spec:
 status:
   loadBalancer:
     ingress:
-    - ip: 35.193.152.162
+    - ip: 104.197.8.82

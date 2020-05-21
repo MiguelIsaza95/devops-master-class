@@ -25,14 +25,13 @@ spec:
       - image: in28min/currency-conversion:0.0.1-RELEASE #CHANGE
         imagePullPolicy: IfNotPresent
         name: currency-conversion
-        # env:
-        #   - name: CURRENCY_EXCHANGE_SERVICE_HOST
-        #     value: http://currency-exchange
-        
-        #     valueFrom: 
-        #       configMapKeyRef:
-        #         key: CURRENCY_EXCHANGE_SERVICE_HOST
-        #         name: currency-conversion-config-map
+        env:
+           - name: CURRENCY_EXCHANGE_SERVICE_HOST
+             #value: http://currency-exchange
+             valueFrom:
+               configMapKeyRef:
+                 key: CURRENCY_EXCHANGE_SERVICE_HOST
+                 name: currency-conversion-config-map
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
 ---
@@ -51,4 +50,4 @@ spec:
   selector:
     app: currency-conversion
   sessionAffinity: None #CHANGE
-  type: LoadBalancer
+  type: NodePort
